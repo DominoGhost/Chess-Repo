@@ -2,7 +2,7 @@
 using System.Drawing;
 using Chess.Pieces;
 
-namespace Chess
+namespace Chess.Models
 {
     class Tile : PictureBox
     {

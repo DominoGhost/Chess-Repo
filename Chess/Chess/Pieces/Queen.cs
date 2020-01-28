@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using Chess.Models;
 
 namespace Chess.Pieces
 {
@@ -8,143 +9,138 @@ namespace Chess.Pieces
         public Queen(Image _queenImage, bool _onWhiteTeam) : base(_queenImage, _onWhiteTeam)
         { }
 
-        public override List<Point> Piece_Clicked()
+        public override List<Coords> Piece_Clicked()
         {
-            List<Point> moveableSpots = new List<Point>();
-
-            // Vertical/Horizontal Movement
-            int arrayCounter = 0;
-            int coordCounter = 0;
+            // Diaganol
+            List<Coords> moveableSpots = new List<Coords>();
             int tilesOnBoard = Chess.MAX_TILES - 1;
-            reachedFirstEnemy = false;
 
-            // Moves the rook to the down
-            for (int i = Row; i < tilesOnBoard; i++)
-            {
-                if (CanMoveToTile(++arrayCounter, 0))
-                {
-                    moveableSpots.Add(new Point(0, --coordCounter));
-                }
-                else
-                {
-                    break;
-                }
-            }
-            arrayCounter = 0;
-            coordCounter = 0;
-            reachedFirstEnemy = false;
-
-            // Moves the rook to the up
-            for (int i = Row; i > 0; i--)
-            {
-                if (CanMoveToTile(--arrayCounter, 0))
-                {
-                    moveableSpots.Add(new Point(0, ++coordCounter));
-                }
-                else
-                {
-                    break;
-                }
-            }
-            arrayCounter = 0;
-            coordCounter = 0;
-            reachedFirstEnemy = false;
-
-            // Moves the rook to the right
-            for (int i = Column; i < tilesOnBoard; i++)
-            {
-                if (CanMoveToTile(0, ++arrayCounter))
-                {
-                    moveableSpots.Add(new Point(++coordCounter, 0));
-                }
-                else
-                {
-                    break;
-                }
-            }
-            arrayCounter = 0;
-            coordCounter = 0;
-            reachedFirstEnemy = false;
-
-            // Moves the rook to the left
-            for (int i = Column; i > 0; i--)
-            {
-                if (CanMoveToTile(0, --arrayCounter))
-                {
-                    moveableSpots.Add(new Point(--coordCounter, 0));
-                }
-                else
-                {
-                    break;
-                }
-            }
-
-
-            // Diagonal Movement
-            int xCounter = 0;
-            int yCounter = 0;
+            int columnCounter = 0;
+            int rowCounter = 0;
             int tempRow = 0;
             reachedFirstEnemy = false;
 
             // Moves the piece towards the bottom-right
-            for (int i = Row; i < tilesOnBoard; i++)
+            for (int i = Location.Row; i < tilesOnBoard; i++)
             {
-                if (CanMoveToTile(++tempRow, ++xCounter))
+                if (CanMoveToTile(++tempRow, ++columnCounter))
                 {
-                    moveableSpots.Add(new Point(xCounter, --yCounter));
+                    moveableSpots.Add(new Coords(++rowCounter, columnCounter));
                 }
                 else
                 {
                     break;
                 }
             }
-            xCounter = 0;
-            yCounter = 0;
+            columnCounter = 0;
+            rowCounter = 0;
             tempRow = 0;
             reachedFirstEnemy = false;
 
             // Moves the piece toward the top-right
-            for (int i = Row; i > 0; i--)
+            for (int i = Location.Row; i > 0; i--)
             {
-                if (CanMoveToTile(--tempRow, ++xCounter))
+                if (CanMoveToTile(--tempRow, ++columnCounter))
                 {
-                    moveableSpots.Add(new Point(xCounter, ++yCounter));
+                    moveableSpots.Add(new Coords(--rowCounter, columnCounter));
                 }
                 else
                 {
                     break;
                 }
             }
-            xCounter = 0;
-            yCounter = 0;
+            columnCounter = 0;
+            rowCounter = 0;
             tempRow = 0;
             reachedFirstEnemy = false;
 
             // Moves the piece towards the bottom-left
-            for (int i = Row; i < tilesOnBoard; i++)
+            for (int i = Location.Row; i < tilesOnBoard; i++)
             {
                 // Checks a temporary column if the piece would be to the very left column
-                if (CanMoveToTile(++tempRow, --xCounter))
+                if (CanMoveToTile(++tempRow, --columnCounter))
                 {
-                    moveableSpots.Add(new Point(xCounter, --yCounter));
+                    moveableSpots.Add(new Coords(++rowCounter, columnCounter));
                 }
                 else
                 {
                     break;
                 }
             }
-            xCounter = 0;
-            yCounter = 0;
+            columnCounter = 0;
+            rowCounter = 0;
             tempRow = 0;
             reachedFirstEnemy = false;
 
             // Moves the piece towards the top-left
-            for (int i = Row; i > 0; i--)
+            for (int i = Location.Row; i > 0; i--)
             {
                 // Checks a temporary column if the piece would be to the very left column
-                if (CanMoveToTile(--tempRow, --xCounter))
+                if (CanMoveToTile(--tempRow, --columnCounter))
                 {
-                    moveableSpots.Add(new Point(xCounter, ++yCounter));
+                    moveableSpots.Add(new Coords(--rowCounter, columnCounter));
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            // Horizontal/Vertical
+            int arrayCounter = 0;
+            reachedFirstEnemy = false;
+
+            // Moves the rook to the down
+            for (int i = Location.Row; i < tilesOnBoard; i++)
+            {
+                if (CanMoveToTile(++arrayCounter, 0))
+                {
+                    moveableSpots.Add(new Coords(arrayCounter, 0));
+                }
+                else
+                {
+                    break;
+                }
+            }
+            arrayCounter = 0;
+            reachedFirstEnemy = false;
+
+            // Moves the rook to the up
+            for (int i = Location.Row; i > 0; i--)
+            {
+                if (CanMoveToTile(--arrayCounter, 0))
+                {
+                    moveableSpots.Add(new Coords(arrayCounter, 0));
+                }
+                else
+                {
+                    break;
+                }
+            }
+            arrayCounter = 0;
+            reachedFirstEnemy = false;
+
+            // Moves the rook to the right
+            for (int i = Location.Column; i < tilesOnBoard; i++)
+            {
+                if (CanMoveToTile(0, ++arrayCounter))
+                {
+                    moveableSpots.Add(new Coords(0, arrayCounter));
+                }
+                else
+                {
+                    break;
+                }
+            }
+            arrayCounter = 0;
+            reachedFirstEnemy = false;
+
+            // Moves the rook to the left
+            for (int i = Location.Column; i > 0; i--)
+            {
+                if (CanMoveToTile(0, --arrayCounter))
+                {
+                    moveableSpots.Add(new Coords(0, arrayCounter));
                 }
                 else
                 {

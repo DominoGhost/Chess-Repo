@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Chess.Pieces;
+using Chess.Models;
 
 namespace Chess
 {
@@ -68,16 +69,14 @@ namespace Chess
                 tiles[1, i].Image = Properties.Resources.BlackPawn;
                 tiles[1, i].PieceOnTile = new Pawn(Properties.Resources.BlackPawn, false)
                 {
-                    Row = 1,
-                    Column = i
+                    Location = new Coords(1, i)
                 };
                 whitePieces[i] = tiles[1, i].PieceOnTile;
 
                 tiles[6, i].Image = Properties.Resources.Pawn;
                 tiles[6, i].PieceOnTile = new Pawn(Properties.Resources.Pawn, true)
                 {
-                    Row = 6,
-                    Column = i
+                    Location = new Coords(6, i)
                 };
                 blackPieces[i] = tiles[6, i].PieceOnTile;
             }
@@ -86,40 +85,35 @@ namespace Chess
             tiles[7, 0].Image = Properties.Resources.Rook;
             tiles[7, 0].PieceOnTile = new Rook(Properties.Resources.Rook, true)
             {
-                Row = 7,
-                Column = 0
+                Location = new Coords(7, 0)
             };
             whitePieces[8] = tiles[7, 0].PieceOnTile;
 
             tiles[7, 1].Image = Properties.Resources.Knight;
             tiles[7, 1].PieceOnTile = new Knight(Properties.Resources.Knight, true)
             {
-                Row = 7,
-                Column = 1
+                Location = new Coords(7, 1)
             };
             whitePieces[9] = tiles[7, 1].PieceOnTile;
 
             tiles[7, 2].Image = Properties.Resources.Bishop;
             tiles[7, 2].PieceOnTile = new Bishop(Properties.Resources.Bishop, true)
             {
-                Row = 7,
-                Column = 2
+                Location = new Coords(7, 2)
             };
             whitePieces[10] = tiles[7, 2].PieceOnTile;
 
             tiles[7, 3].Image = Properties.Resources.Queen;
             tiles[7, 3].PieceOnTile = new Queen(Properties.Resources.Queen, true)
             {
-                Row = 7,
-                Column = 3
+                Location = new Coords(7, 3)
             };
             whitePieces[11] = tiles[7, 3].PieceOnTile;
 
             tiles[7, 4].Image = Properties.Resources.King;
             tiles[7, 4].PieceOnTile = new King(Properties.Resources.King, true)
             {
-                Row = 7,
-                Column = 4
+                Location = new Coords(7, 4)
             };
             kingPieces[0] = (King)tiles[7, 4].PieceOnTile;
             whitePieces[12] = tiles[7, 4].PieceOnTile;
@@ -127,24 +121,21 @@ namespace Chess
             tiles[7, 5].Image = Properties.Resources.Bishop;
             tiles[7, 5].PieceOnTile = new Bishop(Properties.Resources.Bishop, true)
             {
-                Row = 7,
-                Column = 5
+                Location = new Coords(7, 5)
             };
             whitePieces[13] = tiles[7, 5].PieceOnTile;
 
             tiles[7, 6].Image = Properties.Resources.Knight;
             tiles[7, 6].PieceOnTile = new Knight(Properties.Resources.Knight, true)
             {
-                Row = 7,
-                Column = 6
+                Location = new Coords(7, 6)
             };
             whitePieces[14] = tiles[7, 6].PieceOnTile;
 
             tiles[7, 7].Image = Properties.Resources.Rook;
             tiles[7, 7].PieceOnTile = new Rook(Properties.Resources.Rook, true)
             {
-                Row = 7,
-                Column = 7
+                Location = new Coords(7, 7)
             };
             whitePieces[15] = tiles[7, 7].PieceOnTile;
 
@@ -152,40 +143,35 @@ namespace Chess
             tiles[0, 0].Image = Properties.Resources.BlackRook;
             tiles[0, 0].PieceOnTile = new Rook(Properties.Resources.BlackRook, false)
             {
-                Row = 0,
-                Column = 0
+                Location = new Coords(0, 0)
             };
             blackPieces[8] = tiles[0, 0].PieceOnTile;
 
             tiles[0, 1].Image = Properties.Resources.BlackKnight;
             tiles[0, 1].PieceOnTile = new Knight(Properties.Resources.BlackKnight, false)
             {
-                Row = 0,
-                Column = 1
+                Location = new Coords(0, 1)
             };
             blackPieces[9] = tiles[0, 1].PieceOnTile;
 
             tiles[0, 2].Image = Properties.Resources.BlackBishop;
             tiles[0, 2].PieceOnTile = new Bishop(Properties.Resources.BlackBishop, false)
             {
-                Row = 0,
-                Column = 2
+                Location = new Coords(0, 2)
             };
             blackPieces[10] = tiles[0, 2].PieceOnTile;
 
             tiles[0, 3].Image = Properties.Resources.BlackQueen;
             tiles[0, 3].PieceOnTile = new Queen(Properties.Resources.BlackQueen, false)
             {
-                Row = 0,
-                Column = 3
+                Location = new Coords(0, 3)
             };
             blackPieces[11] = tiles[0, 3].PieceOnTile;
 
             tiles[0, 4].Image = Properties.Resources.BlackKing;
             tiles[0, 4].PieceOnTile = new King(Properties.Resources.BlackKing, false)
             {
-                Row = 0,
-                Column = 4
+                Location = new Coords(0, 4)
             };
             kingPieces[1] = (King)tiles[0, 4].PieceOnTile;
             blackPieces[12] = tiles[0, 4].PieceOnTile;
@@ -193,24 +179,21 @@ namespace Chess
             tiles[0, 5].Image = Properties.Resources.BlackBishop;
             tiles[0, 5].PieceOnTile = new Bishop(Properties.Resources.BlackBishop, false)
             {
-                Row = 0,
-                Column = 5
+                Location = new Coords(0, 5)
             };
             blackPieces[13] = tiles[0, 5].PieceOnTile;
 
             tiles[0, 6].Image = Properties.Resources.BlackKnight;
             tiles[0, 6].PieceOnTile = new Knight(Properties.Resources.BlackKnight, false)
             {
-                Row = 0,
-                Column = 6
+                Location = new Coords(0, 6)
             };
             blackPieces[14] = tiles[0, 6].PieceOnTile;
 
             tiles[0, 7].Image = Properties.Resources.BlackRook;
             tiles[0, 7].PieceOnTile = new Rook(Properties.Resources.BlackRook, false)
             {
-                Row = 0,
-                Column = 7
+                Location = new Coords(0, 7)
             };
             blackPieces[15] = tiles[0, 7].PieceOnTile;
         }
@@ -231,12 +214,12 @@ namespace Chess
                         if (currentTile == tile)
                         {
                             Piece pieceMoving = currentTile.PieceToMove;
-                            tiles[pieceMoving.Row, pieceMoving.Column].Image = null;
-                            tiles[pieceMoving.Row, pieceMoving.Column].PieceOnTile = null;
+                            tiles[pieceMoving.Location.Row, pieceMoving.Location.Column].Image = null;
+                            tiles[pieceMoving.Location.Row, pieceMoving.Location.Column].PieceOnTile = null;
 
                             // Changes the pieces location to the new tile and updates the new tiles information
-                            currentTile.PieceToMove.Row = i;
-                            currentTile.PieceToMove.Column = j;
+                            currentTile.PieceToMove.Location.Row = i;
+                            currentTile.PieceToMove.Location.Column = j;
                             currentTile.Image = pieceMoving.PieceImage;
                             currentTile.PieceOnTile = pieceMoving;
 
@@ -269,22 +252,20 @@ namespace Chess
                 Piece pieceClicked = tile.PieceOnTile;
                 if (pieceClicked.OnWhiteTeam == isWhitesTurn)
                 {
-                    List<Point> moveableSpots = pieceClicked.Piece_Clicked();
+                    List<Coords> moveableSpots = pieceClicked.Piece_Clicked();
 
-                    Point originalLocation = new Point(pieceClicked.Row, pieceClicked.Column);
-                    foreach (Point value in moveableSpots)
+                    Coords originalLocation = new Coords(pieceClicked.Location.Row, pieceClicked.Location.Column);
+                    foreach (Coords value in moveableSpots)
                     {
                         // Changes the piece's location temporarily to change the background images to green
-                        pieceClicked.X += value.X;
-                        pieceClicked.Y += value.Y;
+                        pieceClicked.Location += value;
 
-                        Tile spaceToGreen = tiles[pieceClicked.Row, pieceClicked.Column];
+                        Tile spaceToGreen = tiles[pieceClicked.Location.Row, pieceClicked.Location.Column];
                         spaceToGreen.BackgroundImage = greenBack;
                         spaceToGreen.PieceToMove = pieceClicked;
 
                         // Sets the pieces location back to it's original location
-                        pieceClicked.Row = originalLocation.X;
-                        pieceClicked.Column = originalLocation.Y;
+                        pieceClicked.Location = originalLocation;
                     }
                 }
             }
@@ -292,61 +273,61 @@ namespace Chess
 
         private void CheckForCheckMate()
         {
-            for (int i = 0; i < kingPieces.Length; i++)
-            {
-                if (kingPieces[i].OnWhiteTeam != isWhitesTurn)
-                {
-                    List<Point> movementAreas = kingPieces[i].Piece_Clicked();
-                    Point originalLocation = new Point(kingPieces[i].Row, kingPieces[i].Column);
-                    //int moveCounter = 0;
-                    bool inCheck = false;
+            //for (int i = 0; i < kingPieces.Length; i++)
+            //{
+            //    if (kingPieces[i].OnWhiteTeam != isWhitesTurn)
+            //    {
+            //        List<Point> movementAreas = kingPieces[i].Piece_Clicked();
+            //        Point originalLocation = new Point(kingPieces[i].Row, kingPieces[i].Column);
+            //        //int moveCounter = 0;
+            //        bool inCheck = false;
 
-                    if (isWhitesTurn)
-                    {
-                        for (int j = 0; j < whitePieces.Length; j++)
-                        {
-                            if (!inCheck)
-                            {
-                                List<Point> pieceMoves = whitePieces[j].Piece_Clicked();
-                                foreach (Point value in pieceMoves)
-                                {
-                                    Point arrayLocation = Piece.ConvertMovesToLocations(value, new Point(whitePieces[i].X, whitePieces[i].Y));
-                                    if (arrayLocation == new Point(kingPieces[i].Row, kingPieces[i].Column))
-                                    {
-                                        inCheck = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                break;
-                            }                    
-                        }
-                    }
-                    else
-                    {
-                        for (int j = 0; j < blackPieces.Length; j++)
-                        {
-                            if (!inCheck)
-                            {
-                                List<Point> pieceMoves = blackPieces[j].Piece_Clicked();
-                                foreach (Point value in pieceMoves)
-                                {
-                                    Point arrayLocation = Piece.ConvertMovesToLocations(value, new Point(blackPieces[i].X, blackPieces[i].Y));
-                                    if (arrayLocation == new Point(kingPieces[i].Row, kingPieces[i].Column))
-                                    {
-                                        inCheck = true;
-                                        break;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                break;
-                            }
-                        }
-                    }
+            //        if (isWhitesTurn)
+            //        {
+            //            for (int j = 0; j < whitePieces.Length; j++)
+            //            {
+            //                if (!inCheck)
+            //                {
+            //                    List<Point> pieceMoves = whitePieces[j].Piece_Clicked();
+            //                    foreach (Point value in pieceMoves)
+            //                    {
+            //                        Point arrayLocation = Piece.ConvertMovesToLocations(value, new Point(whitePieces[i].X, whitePieces[i].Y));
+            //                        if (arrayLocation == new Point(kingPieces[i].Row, kingPieces[i].Column))
+            //                        {
+            //                            inCheck = true;
+            //                            break;
+            //                        }
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    break;
+            //                }                    
+            //            }
+            //        }
+            //        else
+            //        {
+            //            for (int j = 0; j < blackPieces.Length; j++)
+            //            {
+            //                if (!inCheck)
+            //                {
+            //                    List<Point> pieceMoves = blackPieces[j].Piece_Clicked();
+            //                    foreach (Point value in pieceMoves)
+            //                    {
+            //                        Point arrayLocation = Piece.ConvertMovesToLocations(value, new Point(blackPieces[i].X, blackPieces[i].Y));
+            //                        if (arrayLocation == new Point(kingPieces[i].Row, kingPieces[i].Column))
+            //                        {
+            //                            inCheck = true;
+            //                            break;
+            //                        }
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    break;
+            //                }
+            //            }
+            //        }
 
                     //if (inCheck)
                     //{
@@ -380,9 +361,7 @@ namespace Chess
                     //        kingPieces[i].Column = originalLocation.Y;
                     //        tiles[kingPieces[i].Row, kingPieces[i].Column].PieceOnTile = kingPieces[i];
                     //    }
-                    //}
-                }
-            }
+                    //}       
         }
     }
 }
